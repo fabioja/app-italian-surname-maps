@@ -26,6 +26,7 @@
   "main": "dist/index.js",
   "name": "app-italian-surname-maps",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev --transpile-only src/index.ts",
     "start": "ts-node -r dotenv/config src/index.ts",
     "typeorm": "ts-node -r dotenv/config ./node_modules/typeorm/cli.js -d src/database/data-source.ts"

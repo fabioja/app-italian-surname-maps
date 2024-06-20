@@ -21,4 +21,4 @@ RUN npm install --only=production
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["node -r dotenv/config", "dist/index.js"]
