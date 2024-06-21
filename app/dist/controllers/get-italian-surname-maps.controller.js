@@ -14,7 +14,7 @@ class GetItalianSurnameMapsController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log(req.query['surname']);
+                console.log('surname', req.query['surname']);
                 const surname = req.query['surname'];
                 const data = yield (0, api_names_services_1.getItaianSurnameMaps)(surname);
                 return res.status(data.status_code).json(data);
