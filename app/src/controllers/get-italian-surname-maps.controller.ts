@@ -12,6 +12,5 @@ export default class GetItalianSurnameMapsController {
         } catch (error) {
             return res.status(500).json({ message: 'Error fetching external data' });
         }
-
     }
 }

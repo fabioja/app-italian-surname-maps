@@ -13,8 +13,10 @@ export const apiKeyValidator = (req: Request, res: Response, next: NextFunction)
     service.execute({ key: apiKey }).then((key) => {
         if (!key) {
             return res.status(403).json({ message: 'Invalid API key' });
+        } else {
+            next();
         }
-
-        next();
+    }).catch(() => {
+        return res.status(403).json({ message: 'Invalid API key' });
     })
 };
