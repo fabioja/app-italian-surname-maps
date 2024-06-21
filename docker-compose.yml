@@ -3,15 +3,16 @@ services:
   app:
     build:
       context: ./app
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     environment:
-      NODE_ENV: production
+      NODE_ENV: production      
   nginx:
     build:
       context: .
       dockerfile: Dockerfile.nginx
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - app
