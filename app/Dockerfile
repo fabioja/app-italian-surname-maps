@@ -6,8 +6,7 @@ WORKDIR /app
 COPY ./package*.json ./
 RUN npm install
 
-COPY tsconfig.json ./
-COPY src ./src
+COPY . .
 RUN npm run build
 
 # Stage 2: Run the Node.js application
@@ -15,10 +14,10 @@ FROM node:16
 
 WORKDIR /app
 
-COPY --from=build /app/dist /app/dist
+COPY --from=build /app /app
 COPY package*.json ./
-RUN npm install --only=production
+RUN npm install
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["npm", "start"]
