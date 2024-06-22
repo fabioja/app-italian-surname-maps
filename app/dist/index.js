@@ -39,8 +39,8 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const data_source_1 = require("./database/data-source");
-const api_Key_validator_1 = require("./middlewares/api-Key-validator");
 const routes_1 = __importDefault(require("./routes"));
+const routes_admin_1 = __importDefault(require("./routes-admin"));
 dotenv.config();
 data_source_1.AppDataSource.initialize()
     .then(() => __awaiter(void 0, void 0, void 0, function* () {
@@ -48,8 +48,7 @@ data_source_1.AppDataSource.initialize()
     app.use(express_1.default.json());
     // Middleware CORS
     app.use((0, cors_1.default)());
-    // Middleware para validar a API Key
-    app.use(api_Key_validator_1.apiKeyValidator);
+    app.use(routes_admin_1.default);
     app.use(routes_1.default);
     app.listen(3000);
     console.log("listening on port 3000");

@@ -12,7 +12,11 @@ const apiKeyValidator = (req, res, next) => {
         if (!key) {
             return res.status(403).json({ message: 'Invalid API key' });
         }
-        next();
+        else {
+            next();
+        }
+    }).catch(() => {
+        return res.status(403).json({ message: 'Invalid API key' });
     });
 };
 exports.apiKeyValidator = apiKeyValidator;

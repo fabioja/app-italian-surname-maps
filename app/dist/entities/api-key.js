@@ -12,10 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const uuid_1 = require("uuid");
 let ApiKey = class ApiKey {
-    constructor() {
+    constructor(name) {
         if (!this.id) {
             this.id = (0, uuid_1.v4)();
             this.key = (0, uuid_1.v4)();
+        }
+        if (name) {
+            this.name = name;
         }
     }
 };
@@ -37,7 +40,7 @@ __decorate([
 ], ApiKey.prototype, "created_at", void 0);
 ApiKey = __decorate([
     (0, typeorm_1.Entity)("api_key"),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [String])
 ], ApiKey);
 exports.default = ApiKey;
 //# sourceMappingURL=api-key.js.map
