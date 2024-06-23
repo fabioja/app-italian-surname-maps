@@ -20,8 +20,9 @@ class CreateApiKeyService {
         return __awaiter(this, arguments, void 0, function* ({ name }) {
             const repository = data_source_1.AppDataSource.getRepository(api_key_1.default);
             console.log("api-key service", name);
-            if (yield repository.findOneBy({ name })) {
-                throw new Error("category already exists");
+            const apiKeyDB = yield repository.findOneBy({ name });
+            if (apiKeyDB) {
+                return apiKeyDB;
             }
             const apiKey = repository.create({ name });
             yield repository.save(apiKey);

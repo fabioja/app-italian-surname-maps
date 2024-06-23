@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateApiKey1701388927179 implements MigrationInterface {
+export class CreateTrack1719152557922 implements MigrationInterface {
+
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "api_key",
+                name: "track",
                 columns: [
                     {
                         name: "id",
@@ -12,7 +13,22 @@ export class CreateApiKey1701388927179 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: "name",
+                        name: "application",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "area",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "type_event",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "datail",
                         type: "varchar",
                         isUnique: true,
                     },
@@ -32,6 +48,7 @@ export class CreateApiKey1701388927179 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("api_key");
+        await queryRunner.dropTable("track");
     }
+
 }
