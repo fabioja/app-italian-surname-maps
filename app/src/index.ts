@@ -2,8 +2,8 @@ import cors from 'cors';
 import * as dotenv from "dotenv";
 import express from "express";
 import { AppDataSource } from "./database/data-source";
-import { apiKeyValidator } from './middlewares/api-Key-validator';
 import routes from "./routes";
+import routesAdmin from './routes-admin';
 
 
 dotenv.config();
@@ -16,8 +16,7 @@ AppDataSource.initialize()
         // Middleware CORS
         app.use(cors());
 
-        // Middleware para validar a API Key
-        app.use(apiKeyValidator);
+        app.use(routesAdmin);
 
         app.use(routes);
 

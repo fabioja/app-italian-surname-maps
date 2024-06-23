@@ -32,6 +32,6 @@ export class CreateApiKey1701388927179 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("categories");
+        await queryRunner.dropTable("api_key");
     }
 }

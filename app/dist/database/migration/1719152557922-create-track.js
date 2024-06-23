@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateApiKey1701388927179 = void 0;
+exports.CreateTrack1719152557922 = void 0;
 const typeorm_1 = require("typeorm");
-class CreateApiKey1701388927179 {
+class CreateTrack1719152557922 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.createTable(new typeorm_1.Table({
-                name: "api_key",
+                name: "track",
                 columns: [
                     {
                         name: "id",
@@ -23,7 +23,22 @@ class CreateApiKey1701388927179 {
                         isPrimary: true,
                     },
                     {
-                        name: "name",
+                        name: "application",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "area",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "type_event",
+                        type: "varchar",
+                        isUnique: true,
+                    },
+                    {
+                        name: "datail",
                         type: "varchar",
                         isUnique: true,
                     },
@@ -43,9 +58,9 @@ class CreateApiKey1701388927179 {
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable("api_key");
+            yield queryRunner.dropTable("track");
         });
     }
 }
-exports.CreateApiKey1701388927179 = CreateApiKey1701388927179;
-//# sourceMappingURL=1701388927179-create-api-key.js.map
+exports.CreateTrack1719152557922 = CreateTrack1719152557922;
+//# sourceMappingURL=1719152557922-create-track.js.map

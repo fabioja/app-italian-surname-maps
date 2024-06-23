@@ -15,10 +15,14 @@ export default class ApiKey {
     @CreateDateColumn()
     created_at!: Date;
 
-    constructor() {
+    constructor(name?: string) {
         if (!this.id) {
             this.id = uuid();
             this.key = uuid();
+        }
+
+        if (name) {
+            this.name = name;
         }
     }
 }

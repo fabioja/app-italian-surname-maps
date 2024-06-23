@@ -1,10 +1,13 @@
 import { Router } from "express";
-import CreateApiKeyController from "./controllers/create-api-key-controller";
+import CreateTrackController from "./controllers/create-track-controller";
 import GetItalianSurnameMapsController from "./controllers/get-italian-surname-maps.controller";
+import GetTrackController from "./controllers/get-track.controller";
+import { apiKeyValidator } from "./middlewares/api-Key-validator";
 
 const routes = Router();
 
-routes.post("/api-keys", new CreateApiKeyController().handle);
-routes.get("/italian-surname-maps", new GetItalianSurnameMapsController().handle);
+routes.get("/italian-surname-maps", apiKeyValidator, new GetItalianSurnameMapsController().handle);
+routes.post("/tracks", apiKeyValidator, new CreateTrackController().handle);
+routes.get("/tracks", apiKeyValidator, new GetTrackController().handle);
 
 export default routes;

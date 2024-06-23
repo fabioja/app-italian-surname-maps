@@ -11,8 +11,10 @@ export class CreateApiKeyService {
 
         console.log("api-key service", name);
 
-        if (await repository.findOneBy({ name })) {
-            throw new Error("category already exists");
+        const apiKeyDB = await repository.findOneBy({ name });
+
+        if (apiKeyDB) {
+            return apiKeyDB;
         }
 
         const apiKey = repository.create({ name });

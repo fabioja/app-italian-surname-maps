@@ -1,16 +1,25 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity("categories")
-export default class Category {
+@Entity()
+export class Track {
     @PrimaryColumn()
     id!: string;
 
     @Column()
-    name!: string;
+    application!: string;
 
     @Column()
-    description!: string;
+    area!: string;
+
+    @Column()
+    type_event!: string;
+
+    @Column()
+    datail!: string;
+
+    @Column()
+    key!: string;
 
     @CreateDateColumn()
     created_at!: Date;
@@ -18,6 +27,7 @@ export default class Category {
     constructor() {
         if (!this.id) {
             this.id = uuid();
+            this.key = uuid();
         }
     }
 }

@@ -7,11 +7,9 @@ exports.AppDataSource = void 0;
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const api_key_1 = __importDefault(require("../entities/api-key"));
-const category_1 = __importDefault(require("../entities/category"));
-const video_1 = __importDefault(require("../entities/video"));
-const _1701388927178_create_categories_1 = require("./migration/1701388927178-create-categories");
+const track_1 = require("../entities/track");
 const _1701388927179_create_api_key_1 = require("./migration/1701388927179-create-api-key");
-const _1701389287927_create_videos_1 = require("./migration/1701389287927-create-videos");
+const _1719152557922_create_track_1 = require("./migration/1719152557922-create-track");
 const treatNullValue = (value) => {
     return value ? value : '0';
 };
@@ -24,8 +22,8 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database: process.env.DATABASE_NAME,
     synchronize: true,
     logging: false,
-    entities: [category_1.default, video_1.default, api_key_1.default],
-    migrations: [_1701388927178_create_categories_1.CreateCategories1701388927178, _1701389287927_create_videos_1.CreateVideos1701389287927, _1701388927179_create_api_key_1.CreateApiKey1701388927179],
+    entities: [api_key_1.default, track_1.Track],
+    migrations: [_1701388927179_create_api_key_1.CreateApiKey1701388927179, _1719152557922_create_track_1.CreateTrack1719152557922],
     subscribers: [],
 });
 //# sourceMappingURL=data-source.js.map

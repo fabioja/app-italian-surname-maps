@@ -20,4 +20,8 @@ RUN npm install
 
 EXPOSE 3000
 
+# Defina o script de entrada
+ENTRYPOINT ["./entrypoint.sh"]
+
+# Comando para iniciar a aplicação
 CMD ["npm", "start"]
